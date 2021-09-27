@@ -1,0 +1,277 @@
+@mixin loop($start:1, $max:5, $interval:1, $prefix:"", $suffix:"", $prop:"", $unit:"px", $imp:"!important"){
+    $int: $start * $interval;
+    @while $int <= $max {
+        #{$prefix}#{$int}#{$suffix} {
+            #{$prop}: #{$int}#{$unit} #{$imp};
+        }
+        $start: $start + 1;
+        $int: $start * $interval;
+    }
+}
+
+@mixin r-all ($radius: 5px) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+}
+@mixin r-tl ($radius: 5px) {
+	border-top-left-radius: $radius;
+	-webkit-border-top-left-radius: $radius;
+	-moz-border-top-left-radius: $radius;
+}
+@mixin r-tr ($radius: 5px) {
+	border-top-right-radius: $radius;
+	-webkit-border-top-right-radius: $radius;
+	-moz-border-top-right-radius: $radius;
+}
+@mixin r-bl ($radius: 5px) {
+	border-bottom-left-radius: $radius;
+	-webkit-border-bottom-left-radius: $radius;
+	-moz-border-bottom-left-radius: $radius;
+}
+@mixin r-br ($radius: 5px) {
+	border-bottom-right-radius: $radius;
+	-webkit-border-bottom-right-radius: $radius;
+	-moz-border-bottom-right-radius: $radius;
+}
+
+
+@mixin centerH () {
+	position: absolute;
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+	left: 50%;
+}
+@mixin centerV () {
+	position: absolute;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	top: 50%;
+}
+
+@include loop(8, 50, 1, ".fs-", "", "font-size", "px", "!important");
+@include loop(1, 900, 100, ".fw-", "", "font-weight", "", "!important");
+@include loop(1, 50, 1, ".lh-", "", "line-height", "px", "!important");
+@include loop(1, 500, 1, ".h-", "", "height", "px", "!important");
+@include loop(1, 500, 1, ".mnh-", "", "min-height", "px", "!important");
+@include loop(1, 1500, 1, ".w-", "", "width", "px", "!important");
+@include loop(1, 1500, 1, ".mnw-", "", "min-width", "px", "!important");
+@include loop(1, 100, 1, ".h-", "-per", "height", "%", "!important");
+@include loop(0, 180, 1, ".w-", "-per", "width", "%", "!important");
+@include loop(0, 100, 1, ".mw-", "-per", "max-width", "%", "");
+@include loop(0, 150, 1, ".mh-", "", "min-height", "px", "!important");
+
+@include loop(0, 100, 1, ".p-", "", "padding", "px", "!important");
+@include loop(0, 100, 1, ".pt-", "", "padding-top", "px", "!important");
+@include loop(0, 100, 1, ".pr-", "", "padding-right", "px", "!important");
+@include loop(0, 100, 1, ".pl-", "", "padding-left", "px", "!important");
+@include loop(0, 100, 1, ".pb-", "", "padding-bottom", "px", "!important");
+
+@include loop(0, 100, 1, ".m-", "", "margin", "px", "!important");
+@include loop(0, 100, 1, ".mt-", "", "margin-top", "px", "!important");
+@include loop(0, 100, 1, ".mr-", "", "margin-right", "px", "!important");
+@include loop(0, 100, 1, ".ml-", "", "margin-left", "px", "!important");
+@include loop(0, 100, 1, ".mb-", "", "margin-bottom", "px", "!important");
+
+@include loop(-100, 0, 1, ".m-", "", "margin", "px", "!important");
+@include loop(-100, 0, 1, ".mt-", "", "margin-top", "px", "!important");
+@include loop(-100, 0, 1, ".mr-", "", "margin-right", "px", "!important");
+@include loop(-100, 0, 1, ".ml-", "", "margin-left", "px", "!important");
+@include loop(-100, 0, 1, ".mb-", "", "margin-bottom", "px", "!important");
+
+@include loop(-100, 100, 1, ".t-", "", "top", "px", "!important");
+@include loop(-100, 100, 1, ".b-", "", "bottom", "px", "!important");
+@include loop(-100, 100, 1, ".r-", "", "right", "px", "!important");
+@include loop(-100, 100, 1, ".l-", "", "left", "px", "!important");
+
+@include loop(0, 100, 1, ".br-", "-per", "border-radius", "%", "");
+@include loop(0, 100, 1, ".br-", "", "border-radius", "px", "!important");
+
+@include loop(0, 100, 1, ".b-l-", "", "border-radius", "px", "!important");
+@include loop(0, 100, 1, ".b-r-", "", "border-radius", "px", "!important");
+@include loop(0, 100, 1, ".b-t-", "", "border-radius", "px", "!important");
+@include loop(0, 100, 1, ".b-b-", "", "border-radius", "px", "!important");
+
+@include loop(0, 100, 10, ".opacity-", "", "opacity", "%", "!important");
+
+
+.lds-ellipsis {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 40px;
+	left: 39%;
+  }
+  .lds-ellipsis div {
+	position: absolute;
+	top: 15px;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	background: rgb(255, 5, 5);
+	animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+	left: 8px;
+	animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+	left: 8px;
+	animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+	left: 32px;
+	animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+	left: 56px;
+	animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+	0% {
+	  transform: scale(0);
+	}
+	100% {
+	  transform: scale(1);
+	}
+  }
+  @keyframes lds-ellipsis3 {
+	0% {
+	  transform: scale(1);
+	}
+	100% {
+	  transform: scale(0);
+	}
+  }
+  @keyframes lds-ellipsis2 {
+	0% {
+	  transform: translate(0, 0);
+	}
+	100% {
+	  transform: translate(24px, 0);
+	}
+  }
+  .t-black{
+	color: #191919 !important;
+  }
+  .card{
+	background: #f5f5f5;
+    box-sizing: border-box;
+    border-radius: 4.37743px;
+    filter: drop-shadow(0px 0px 14.0078px rgba(0, 0, 0, 0.12));
+    border: 0!important;
+    /* box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15); */
+    // box-shadow: 0px 5px 10px rgba(27,27,27,0.2);
+    margin-bottom: 35px;
+    // /* height: 120px; */
+    
+    .card-footer, 
+    .card-header{
+      padding: 25px;
+      background-color: transparent;
+      span{
+        font-size: 14px;
+        line-height: 24px;
+        color: #666666;
+        font-weight: 400;
+        margin-bottom: 10px;
+      }
+      h4{
+        font-size: 18px;
+        line-height: 24px;
+        color: #05172e;
+        font-weight: 500;
+        margin: 0px;
+      }
+    }
+    .card-footer{
+      border-top: 1px solid rgba(0, 0, 0, 0.125);
+    }
+  }
+
+  .modal{
+	.modal_sm{
+	  width: 390px;
+	}
+	.modal_md{
+	  max-width: 600px !important;
+	}
+	.modal_lg{
+	  max-width: 900px;
+	  max-height: 200px !important;
+	}
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .btn{
+	&:disabled{
+		background-color: gray !important;
+		border: none;
+	}
+  }
+
+   //loader
+   .lds-ellipsis {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 40px;
+	left: 39%;
+  }
+  .lds-ellipsis div {
+	position: absolute;
+	top: 15px;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	background: rgb(255, 5, 5);
+	animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+	left: 8px;
+	animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+	left: 8px;
+	animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+	left: 32px;
+	animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+	left: 56px;
+	animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+	0% {
+	  transform: scale(0);
+	}
+	100% {
+	  transform: scale(1);
+	}
+  }
+  @keyframes lds-ellipsis3 {
+	0% {
+	  transform: scale(1);
+	}
+	100% {
+	  transform: scale(0);
+	}
+  }
+  @keyframes lds-ellipsis2 {
+	0% {
+	  transform: translate(0, 0);
+	}
+	100% {
+	  transform: translate(24px, 0);
+	}
+  }

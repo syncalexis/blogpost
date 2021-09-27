@@ -1,0 +1,28 @@
+<div class="container-fluid dark">
+    <div class="container spacer pb-5">
+        <div class="row justify-content-center">
+          <!-- Column -->
+          <div class="col-md-12 text-center mb-50 mt-50">
+            <h2 class="title">{{blog.heading}}</h2>
+            <h6 class="title"> {{blog.Author}}</h6>
+            <h6 class="title"> {{blog.createdAt | date:'mediumDate'}}</h6>
+            <div class="t-black">
+              <p>
+                {{blog.content}}
+              </p>
+            </div>
+            <div class="row mt-80">
+              <div class="col-md-6 d-flex justify-content-start">
+                <button class="btn btn-primary" routerLink='/home'>Go back</button>
+              </div>
+              <div class="col-md-6 d-flex justify-content-end ">
+                <button class="btn btn-danger mr-20" (click)="delete(blog.id)">Delete Post</button>
+                <button class="btn btn-success" (click)="updateBlog()">Update Post</button>
+              </div>
+            </div>
+        
+          </div>
+          <!-- Column -->
+        </div>
+      </div>
+</div>

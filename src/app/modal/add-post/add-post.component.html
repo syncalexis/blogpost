@@ -1,0 +1,36 @@
+<div class="card p-30">
+    <div class="card-title">
+        Add a post
+    </div>
+    <form [formGroup]="blogForm">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Title</mat-label>
+            <input formControlName="heading" matInput placeholder="Ex. My title">
+            <mat-error *ngIf="blogForm.controls['heading'].errors?.required">
+                Title is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Content</mat-label>
+            <textarea formControlName="content" matInput placeholder="Ex. It makes me feel..."></textarea>
+            <mat-error *ngIf="blogForm.controls['content'].errors?.required">
+                Content is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <div class="col-md-12 d-flex justify-content-end">
+            <button class="btn btn-white t-black mr-10" (click)="cancel()">
+                Cancel
+            </button>
+            <ng-container *ngIf="event == 'add'">
+                <button [disabled]="blogForm.invalid || isSubmit" class="btn btn-primary" (click)="addPost()">
+                    Save
+                </button>
+            </ng-container>
+            <ng-container *ngIf="event == 'update'">
+                <button [disabled]="blogForm.invalid || isSubmit" class="btn btn-primary" (click)="updatePost()">
+                    Update
+                </button>
+            </ng-container>
+        </div>
+    </form>
+</div>

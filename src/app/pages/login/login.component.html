@@ -1,0 +1,27 @@
+<div class="login-conponent">
+    <div class="">
+        <div class="container grid-2">
+            <div class="card-login">
+                <div class="">
+                  
+                    <form [formGroup]="loginForm" class="login">
+                        <input type="text" formControlName="username" placeholder="Username">
+                        <input type="password" formControlName="password" placeholder="Password">
+                        <div class="d-flex justify-items-center">
+                            <ng-container *ngIf="isLoading">
+                            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                        </ng-container>
+                        </div>
+                        <button *ngIf="!isLoading" class="w-100-per" (click)="login()">Login</button>
+                              </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- partial:index.partial.html -->
+
+<!-- partial -->
+  
+

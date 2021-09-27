@@ -1,0 +1,94 @@
+<div class="static-slider-head" style="background-image: url(assets/images/landingpage/banner-bg.jpg)">
+  <div class="container">
+    <!-- Row  -->
+    <div class="row justify-content-center">
+      <!-- Column -->
+      <div class="col-lg-9 col-md-6 align-self-center text-center no-trans">
+        <h1 class="title">Your Daily Blog</h1>
+        <h5 class="subtitle op-5">
+        </h5>
+      </div>
+      <!-- Column -->
+    </div>
+  </div>
+</div>
+<!-- Row  -->
+<div class="container spacer pb-40">
+  <div class="row justify-content-center">
+    <!-- Column -->
+    <div class="col-md-12 text-center mb-50">
+      <h2 class="title">Recent Blogs</h2>
+      <div class="inner-group search w-100-per">
+        <div class="searchBar-Container d-flex align-items-center justify-content-start ">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="position-absolute ml-40">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9649 11H12.7549L17.7449 16L16.2549 17.49L11.2549 12.5V11.71L10.9849 11.43C9.84488 12.41 8.36488 13 6.75488 13C3.16488 13 0.254883 10.09 0.254883 6.5C0.254883 2.91 3.16488 0 6.75488 0C10.3449 0 13.2549 2.91 13.2549 6.5C13.2549 8.11 12.6649 9.59 11.6849 10.73L11.9649 11ZM2.25488 6.5C2.25488 8.99 4.26488 11 6.75488 11C9.24488 11 11.2549 8.99 11.2549 6.5C11.2549 4.01 9.24488 2 6.75488 2C4.26488 2 2.25488 4.01 2.25488 6.5Z" fill="#3E3E3E"/>
+            </svg>
+            
+          <input type="text" class="form-control search pl-70 h-60" id="inputSearch" placeholder="Search title or author"  [(ngModel)]="listingArgs.search" [ngModelOptions]="{standalone: true}" (keyup)="this.startSearching.next($event)"/>
+        </div>
+      </div>
+    </div>
+    <!-- Column -->
+  </div>
+  <ng-container *ngIf="isLoading">
+  <div class="row">
+    <div class="col-md-6" *ngFor="let item of skeletonloader">
+      <ngx-skeleton-loader  [theme]="{ height: '320px',width: '100%'}"></ngx-skeleton-loader>
+      </div>
+  </div>
+   
+           
+  </ng-container>
+  <ng-container *ngIf="!isLoading">
+    <div *ngIf="isEmpty" class="event-body col-md-12 h-430 ">
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-center align-items-center h-430">
+          <span class="fs-16 mt-15 d-block" style="color: #979797;">0 Results found.</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!isEmpty" class="row ">
+      <!-- Column -->
+      <div class="col-md-6 no-trans border-bottom mb-4 mt-20" *ngFor="let bl of blogs">
+        <div  class="card p-30" data-aos="flip-left" data-aos-duration="1200">
+          <div class="row">
+            <div class="col-md-12 no-trans">
+              <div class="card-title t-black">
+                {{bl.heading}}
+                <p class="card-subtitle font-12">Date: {{ bl.createdAt | date: 'mediumDate' }}</p>
+              </div>
+              <div class="card-body">
+                <p style="text-indent: 2rem;">
+                  {{bl.content.substring(0, 900) }}..
+                </p>
+              
+              </div>
+          
+                <div class="row">
+                  <div class="col-md-6">
+                    <h6 class="card-subtitle font-12 mt-1">{{bl.Author}}</h6>
+                  </div>
+                  <div class="col-md-6 d-flex justify-content-end">
+                    <a class="linking font-medium text-themecolor m-t-10 cursor-pointer" routerLink ="/home/{{bl.id}}">
+                      <span>Show Detail</span>
+                      <i class="ti-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="d-flex justify-content-center w-100-per mt-30">
+        <!-- Column -->
+        <div class="col-md-12 text-center">
+          <button class="btn btn-success" (click)="add_post()"> Add a post</button>
+        </div>
+        <!-- Column -->
+      </div>
+    </div>
+  </ng-container>
+
+</div>
