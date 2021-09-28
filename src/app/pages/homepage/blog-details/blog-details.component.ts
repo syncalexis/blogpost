@@ -24,9 +24,7 @@ export class BlogDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._route.paramMap.subscribe( url_param =>{
-      this.id = url_param.get('id');
-    })
+    this.id = this._route.snapshot.paramMap.get("id");
     this.getBlogDetails()
   }
   getBlogDetails(){
@@ -68,7 +66,5 @@ export class BlogDetailsComponent implements OnInit {
       this.router.navigate(['/home']);
       })
     })
-  
   }
-
 }

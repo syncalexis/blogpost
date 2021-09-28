@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Globals } from 'src/app/services/globals';
 import { Injectable } from "@angular/core";
 
 @Injectable()
@@ -14,7 +13,6 @@ export class BannerNavigationComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public global:Globals
   ) { }
   user:any = [];
   isLoggedin:boolean = false;

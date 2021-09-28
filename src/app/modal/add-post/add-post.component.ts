@@ -10,7 +10,6 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class AddPostComponent implements OnInit {
 event:any;
 blogForm!: FormGroup;
-onClose:any;
 isSubmit:boolean=false;
 post:any
   constructor(
@@ -26,9 +25,15 @@ post:any
     this.blogForm = this.fb.group({
       heading: [ null, [Validators.required,]],
       content: [null, [Validators.required]],
+      Author:'',
+      createdAt: ''
+  }, {});
+  if(user){
+    this.blogForm.patchValue({
       Author:user.name,
       createdAt: new Date()
-  }, {});
+    })
+  }
     if(this.event == 'update'){
       this.blogForm.patchValue({
         heading:this.post.heading,
@@ -46,9 +51,15 @@ post:any
       this.onClose('success');
     })
   }
-  cancel(){
-    this.onClose();
+ 
+  closeModal($event: Event) {
+    $event.preventDefault();
+    this.onClose(null);
   }
+
+  onClose(value:any): any {
+    // close modal
+   }
 
   updatePost(){
     this.isSubmit = true;

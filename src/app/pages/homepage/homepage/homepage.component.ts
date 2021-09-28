@@ -6,7 +6,6 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { AddPostComponent } from 'src/app/modal/add-post/add-post.component';
-import { BannerNavigationComponent } from 'src/app/shared/banner-navigation/banner-navigation.component';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -28,13 +27,11 @@ export class HomepageComponent implements OnInit {
     public router: Router,
     private blogService:HomeService,
     protected modalService: BsModalService,
-    private navi:BannerNavigationComponent
   ) {
 
   }
 
   ngOnInit(): void {
-    this.navi.isLoggedin = true;
     this.getBlogs()
     this.startSearching.pipe(
       debounceTime(300),
@@ -73,11 +70,5 @@ export class HomepageComponent implements OnInit {
       
     })
   }
-  loginClick() {
-    this.router.navigate(['/login']);
-  }
 
-  newPost() {
-    this.router.navigate(['/post']);
-  }
 }

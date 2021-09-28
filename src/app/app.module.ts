@@ -51,7 +51,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AddPostComponent } from './modal/add-post/add-post.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { Globals } from './services/globals';
 
 @NgModule({
   exports: [
@@ -117,7 +116,6 @@ export class MaterialModule {}
   providers: [
     HttpServiceService,
     NgbDropdown ,
-    Globals,
     BannerNavigationComponent
   ],
   bootstrap: [AppComponent]

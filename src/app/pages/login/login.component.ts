@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { LoginserviceService } from './loginservice.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { Globals } from 'src/app/services/globals';
 
 
 
@@ -21,7 +20,6 @@ export class LoginComponent implements OnInit {
     private fb : FormBuilder,
     private loginService: LoginserviceService,
     private notify: NotificationService,
-    public global:Globals
   ) { }
 
   ngOnInit(): void {
@@ -46,8 +44,6 @@ export class LoginComponent implements OnInit {
             user_type:res[0].avatar,
           }
           localStorage.setItem('user',JSON.stringify(userInfo));
-          this.global.user = userInfo;
-          console.log(this.global.user)
           this.notify.showNotification('success',
            'Hello!'+ ' '+res[0].name);
           this.router.navigate(['/home']);

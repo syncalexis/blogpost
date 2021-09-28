@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { BannerNavigationComponent } from './banner-navigation.component';
 
@@ -8,7 +9,8 @@ describe('BannerNavigationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BannerNavigationComponent ]
+      declarations: [ BannerNavigationComponent],
+      imports: [RouterTestingModule]
     })
     .compileComponents();
   });
